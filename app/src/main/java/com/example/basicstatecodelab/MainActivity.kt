@@ -20,6 +20,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -27,6 +28,8 @@ import com.example.basicstatecodelab.ui.theme.BasicStateCodelabTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
@@ -62,7 +65,7 @@ fun StartScreen(modifier: Modifier = Modifier) {
             FirstScreen(
                 count = count.intValue,
                 onIncrement = { count.intValue++ },
-                onNavigateToSecond = { navController.navigate(Screen.secondScreen) }
+                onNavigateToSecond = { navController.navigate(route = Screen.secondScreen)}
             )
         }
 
